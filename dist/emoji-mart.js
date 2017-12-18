@@ -3481,6 +3481,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 
 	var RECENT_CATEGORY = { name: 'Recent', emojis: [] };
@@ -3608,6 +3623,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    hideCategoriesBar: {
 	      type: Boolean,
 	      default: false
+	    },
+	    infiniteScroll: {
+	      type: Boolean,
+	      default: true
 	    }
 	  },
 	  data: function data() {
@@ -3762,8 +3781,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$refs.search.clear();
 
 	        this.$nextTick(scrollToComponent);
-	      } else {
+	      } else if (this.infiniteScroll) {
 	        scrollToComponent();
+	      } else {
+	        this.activeCategory = this.categories[i];
 	      }
 	    },
 	    onSearch: function onSearch(emojis) {
@@ -5833,7 +5854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      "custom": _vm.customEmojis,
 	      "emoji-props": _vm.emojiProps
 	    }
-	  }), _vm._v(" "), _vm._l((_vm.filteredCategories), function(category) {
+	  }), _vm._v(" "), (_vm.infiniteScroll) ? _vm._l((_vm.filteredCategories), function(category) {
 	    return _c('category', {
 	      directives: [{
 	        name: "show",
@@ -5854,7 +5875,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "emoji-props": _vm.emojiProps
 	      }
 	    })
-	  })], 2), _vm._v(" "), (!_vm.hidePreviewBar) ? _c('div', {
+	  }) : (_vm.activeCategory) ? _c('category', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (!_vm.searchEmojis),
+	      expression: "!searchEmojis"
+	    }],
+	    key: _vm.activeCategory.name,
+	    ref: "categories",
+	    attrs: {
+	      "i18n": _vm.i18n,
+	      "emojis-to-show-filter": _vm.emojisToShowFilter,
+	      "name": _vm.activeCategory.name,
+	      "emojis": _vm.activeCategory.emojis,
+	      "native": _vm.native,
+	      "custom": _vm.customEmojis,
+	      "emoji-props": _vm.emojiProps
+	    }
+	  }) : _vm._e()], 2), _vm._v(" "), (!_vm.hidePreviewBar) ? _c('div', {
 	    staticClass: "emoji-mart-bar"
 	  }, [_c('preview', {
 	    attrs: {
