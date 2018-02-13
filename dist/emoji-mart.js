@@ -4833,8 +4833,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (var _iterator3 = (0, _getIterator3.default)(_data2.default.categories), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
 	          var category = _step3.value;
 
-	          var isIncluded = include && include.length ? include.indexOf(category.name.toLowerCase()) > -1 : true;
-	          var isExcluded = exclude && exclude.length ? exclude.indexOf(category.name.toLowerCase()) > -1 : false;
+	          var isIncluded = include && include.length ? include.indexOf(category.slug) > -1 : true;
+	          var isExcluded = exclude && exclude.length ? exclude.indexOf(category.slug) > -1 : false;
 	          if (!isIncluded || isExcluded) {
 	            continue;
 	          }
