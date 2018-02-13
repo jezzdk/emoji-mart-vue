@@ -3714,8 +3714,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this = this;
 
 	      return this.categories.filter(function (category) {
-	        var isIncluded = _this.include && _this.include.length ? _this.include.indexOf(category.name.toLowerCase()) > -1 : true;
-	        var isExcluded = _this.exclude && _this.exclude.length ? _this.exclude.indexOf(category.name.toLowerCase()) > -1 : false;
+	        var isIncluded = _this.include && _this.include.length ? _this.include.indexOf(category.slug) > -1 : true;
+	        var isExcluded = _this.exclude && _this.exclude.length ? _this.exclude.indexOf(category.slug) > -1 : false;
 	        var hasEmojis = category.emojis.length > 0;
 
 	        if (_this.emojisToShowFilter) {
