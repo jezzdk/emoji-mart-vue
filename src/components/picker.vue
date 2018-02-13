@@ -300,9 +300,6 @@ export default {
     this.categories.push(...data.categories)
     this.categories.push(CUSTOM_CATEGORY)
 
-    this.categories[0].first = true
-    this.activeCategory = this.filteredCategories[0]
-
     this.categories = this.categories.map((category) => {
         switch (category.name) {
             case 'Smileys & People':
@@ -325,6 +322,9 @@ export default {
         }
         return category;
     });
+
+    this.categories[0].first = true
+    this.activeCategory = this.filteredCategories[0]
   },
   methods: {
     onScroll() {
