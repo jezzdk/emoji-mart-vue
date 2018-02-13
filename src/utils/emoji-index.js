@@ -57,20 +57,20 @@ function search(value, { emojisToShowFilter, maxResults, include, exclude, custo
 
     if (include.length || exclude.length) {
       pool = {}
-      
+
       if (include && include.length && previousInclude != include.sort().join(',')) {
         previousInclude = include.sort().join(',')
         index = {}
       }
-      
+
       if (exclude && exclude.length && previousExclude != exclude.sort().join(',')) {
         previousExclude = exclude.sort().join(',')
         index = {}
       }
 
       for (let category of data.categories) {
-        let isIncluded = include && include.length ? include.indexOf(category.name.toLowerCase()) > -1 : true
-        let isExcluded = exclude && exclude.length ? exclude.indexOf(category.name.toLowerCase()) > -1 : false
+        let isIncluded = include && include.length ? include.indexOf(category.slug) > -1 : true
+        let isExcluded = exclude && exclude.length ? exclude.indexOf(category.slug) > -1 : false
         if (!isIncluded || isExcluded) { continue }
 
         for (let emojiId of category.emojis) {
