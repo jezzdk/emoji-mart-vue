@@ -3738,9 +3738,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    (_categories = this.categories).push.apply(_categories, (0, _toConsumableArray3.default)(_data2.default.categories));
 	    this.categories.push(CUSTOM_CATEGORY);
 
-	    this.categories[0].first = true;
-	    this.activeCategory = this.filteredCategories[0];
-
 	    this.categories = this.categories.map(function (category) {
 	      switch (category.name) {
 	        case 'Smileys & People':
@@ -3763,6 +3760,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return category;
 	    });
+
+	    this.categories[0].first = true;
+	    this.activeCategory = this.filteredCategories[0];
 	  },
 
 	  methods: {
