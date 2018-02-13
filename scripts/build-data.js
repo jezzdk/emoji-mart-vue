@@ -5,7 +5,7 @@ var fs = require('fs'),
     mkdirp = require('mkdirp'),
     buildSearch = require('../src/utils/build-search')
 
-var categories = ['People', 'Nature', 'Foods', 'Activity', 'Places', 'Objects', 'Symbols', 'Flags'],
+var categories = ['Smileys & People', 'Animals & Nature', 'Food & Drink', 'Activities', 'Travel & Places', 'Objects', 'Symbols', 'Flags'],
     data = { categories: [], emojis: {}, skins: {}, short_names: {} },
     categoriesIndex = {}
 

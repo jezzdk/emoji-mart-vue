@@ -5,9 +5,9 @@
     <span
       :class="{ 'emoji-mart-anchor': true, 'emoji-mart-anchor-selected': category.name == activeCategory.name }"
       :style="{ 'color': (category.name == activeCategory.name ? color : '') }"
-      :title="i18n.categories[category.name.toLowerCase()]"
+      :title="i18n.categories[category.slug]"
       @click="$emit('click', category)">
-      <i v-html="assets.svgs[category.name]"></i>
+      <i v-html="assets.svgs[category.slug]"></i>
       <span class="emoji-mart-anchor-bar" :style="{ backgroundColor: color }"></span>
     </span>
   </template>

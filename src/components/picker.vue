@@ -29,6 +29,7 @@
       :i18n="i18n"
       :emojis-to-show-filter="emojisToShowFilter"
       name="Search"
+      slug="search"
       :emojis="searchEmojis"
       :native="native"
       :custom="customEmojis"
@@ -43,6 +44,7 @@
         :i18n="i18n"
         :emojis-to-show-filter="emojisToShowFilter"
         :name="category.name"
+        :slug="category.slug"
         :emojis="category.emojis"
         :native="native"
         :custom="customEmojis"
@@ -57,6 +59,7 @@
       :i18n="i18n"
       :emojis-to-show-filter="emojisToShowFilter"
       :name="activeCategory.name"
+      :slug="activeCategory.slug"
       :emojis="activeCategory.emojis"
       :native="native"
       :custom="customEmojis"
@@ -104,7 +107,7 @@ const I18N = {
     people: 'Smileys & People',
     nature: 'Animals & Nature',
     foods: 'Food & Drink',
-    activity: 'Activity',
+    activity: 'Activities',
     places: 'Travel & Places',
     objects: 'Objects',
     symbols: 'Symbols',
@@ -160,18 +163,18 @@ export default {
       type: String,
       default: '#ae65c5'
     },
-    set: {
+    /*set: {
       type: String,
       default: 'apple'
-    },
+    },*/
     skin: {
       type: Number,
       default: 1
     },
-    native: {
+    /*native: {
       type: Boolean,
       default: false
-    },
+    },*/
     backgroundImageFn: {
       type: Function
     },
@@ -244,7 +247,9 @@ export default {
       previewEmoji: null,
       searchEmojis: null,
       customEmojis: customEmojis,
-      recentEmojis: recentEmojis
+      recentEmojis: recentEmojis,
+      set: 'apple',
+      native: true
     }
   },
   computed: {
@@ -297,6 +302,29 @@ export default {
 
     this.categories[0].first = true
     this.activeCategory = this.filteredCategories[0]
+
+    this.categories = this.categories.map((category) => {
+        switch (category.name) {
+            case 'Smileys & People':
+                category.slug = 'people';
+                break;
+            case 'Activities':
+                category.slug = 'activity';
+                break;
+            case 'Food & Drink':
+                category.slug = 'foods';
+                break;
+            case 'Animals & Nature':
+                category.slug = 'nature';
+                break;
+            case 'Travel & Places':
+                category.slug = 'places';
+                break;
+            default:
+                category.slug = category.name.toLowerCase();
+        }
+        return category;
+    });
   },
   methods: {
     onScroll() {

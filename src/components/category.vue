@@ -2,7 +2,7 @@
 
 <div :class="{ 'emoji-mart-category': true, 'emoji-mart-no-results': !hasResults }" v-if="isVisible && (isSearch || hasResults)">
   <div class="emoji-mart-category-label">
-    <span>{{ i18n.categories[name.toLowerCase()] }}</span>
+    <span>{{ i18n.categories[slug] }}</span>
   </div>
 
   <emoji
@@ -60,6 +60,10 @@ export default {
       default: true
     },
     name: {
+      type: String,
+      required: true
+    },
+    slug: {
       type: String,
       required: true
     },
